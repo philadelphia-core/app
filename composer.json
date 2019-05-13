@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.6.9",
-        "philadelphia/router": ">=1.0.0",
-        "philadelphia/helpers": ">=1.0.0"
+        "philadelphia/router": "dev-master",
+        "philadelphia/helpers": "dev-master"
     },
     "autoload": {
         "psr-4": {
