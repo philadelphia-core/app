@@ -1,5 +1,5 @@
 {
-    "name": "philadelphia-core/app",
+    "name": "philadelphia/app",
     "description": "The PhiladelPhia App package.",
     "homepage": "https://philadelphia.com",
     "license": "MIT",
