@@ -37,7 +37,7 @@
 
     public function setting(string $settings)
     {
-      Settings::$path = $settings;
+      Settings::setSettingsToDatabase($settings);
     }
 
     public function use() 
