@@ -48,18 +48,17 @@
     public function __construct($settings = null)
     {
       $settings = empty(static::$settings) ? $settings : static::$settings;
-      
-      if (!is_array($settings) && !is_string($settings))
+      if (!is_array($settings) && is_string($settings))
       {
         if (!file_exists($settings))
         {
           throw new Exceptions("File settings not exists, inside projects $settings");
         }
+        $settings = parse_ini_file($settings);
       }
-
       $this->file = $settings;
       $this->extractParams();
-
+      
       static::$settings = $this;
     }
 
