@@ -38,6 +38,8 @@
       ]
     ];
 
+    static $settings;
+
     public static function setSettings($settings)
     {
       static::$settings = $settings;
