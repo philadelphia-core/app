@@ -13,7 +13,7 @@
    */
   class Settings
   {
-    public static $path;
+    public static $pathOrArray;
     public static $settings;
 
     public $file;
@@ -43,14 +43,24 @@
       ]
     ];
     
+    public static function setSettingsToDatabase($pathOrArray)
+    {
+      static::$pathOrArray = $pathOrArray;
+    }
+    
     public function __construct()
     {
-      if (!file_exists(static::$path))
+      if (!is_array(static::$pathOrArray)) 
       {
-        throw new Exceptions("File settings not exists, inside projects $path");
+        if (!file_exists(static::$pathOrArray))
+        {
+          throw new Exceptions("File settings not exists, inside projects $pathOrArray");
+        }
+  
+        $this->file = parse_ini_file(static::$pathOrArray);
       }
 
-      $this->file = parse_ini_file(static::$path);
+      $this->file = static::$pathOrArray;
 
       $this->extractParams();
 
@@ -106,11 +116,6 @@
       $this->config['jwt']['algorithm'] = array_key_exists('algorithm', $this->file)
                       ? $this->file['algorithm']
                         : $jwt['algorithm'];
-    }
-
-    public static function setSettingsToDatabase(string $path)
-    {
-      static::$path = $path;
     }
 
     /**
