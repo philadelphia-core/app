@@ -13,16 +13,11 @@
    */
   class Settings
   {
-    public static $pathOrArray;
-    public static $settings;
-
-    public $file;
-
     // Initialitation var config.
     private $config = [
       'database' => [],
       'jwt' => []
-  ];
+    ];
 
     // Default configuratio
     private $defaultItemsSettings = [
@@ -42,26 +37,25 @@
         'algorithm' => ''
       ]
     ];
-    
-    public static function setSettingsToDatabase($pathOrArray)
+
+    public static function setSettings($settings)
     {
-      static::$pathOrArray = $pathOrArray;
+      static::$settings = $settings;
     }
     
-    public function __construct()
+    public function __construct($settings = null)
     {
-      if (!is_array(static::$pathOrArray)) 
+      $settings = empty(static::$settings) ? $settings : static::$settings;
+      
+      if (!is_array($settings) && !is_string($settings))
       {
-        if (!file_exists(static::$pathOrArray))
+        if (!file_exists($settings))
         {
-          throw new Exceptions("File settings not exists, inside projects $pathOrArray");
+          throw new Exceptions("File settings not exists, inside projects $settings");
         }
-  
-        $this->file = parse_ini_file(static::$pathOrArray);
       }
 
-      $this->file = static::$pathOrArray;
-
+      $this->file = $settings;
       $this->extractParams();
 
       static::$settings = $this;

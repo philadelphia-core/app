@@ -7,6 +7,12 @@
    */
   interface SettingsInterface 
   {
+
+    /**
+     * Set settings a way static.
+     */
+    public static function setSettings($settings);
+
     /**
      * Set settings at app.
      */
