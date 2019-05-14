@@ -2,9 +2,6 @@
 
   namespace PhiladelPhia\App;
 
-  use PhiladelPhia\App\Settings;
-  use PhiladelPhia\App\Interfaces\SettingsInterface;
-
   use PhiladelPhia\Router\Router;
 
   use InvalidArgumentException;
@@ -33,11 +30,6 @@
     public function __construct()
     {
       $this->route = new Router();
-    }
-
-    public function setting(string $settings)
-    {
-      Settings::setSettingsToDatabase($settings);
     }
 
     public function use() 
