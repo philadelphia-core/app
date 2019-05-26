@@ -16,7 +16,7 @@
     /**
      * Set settings at app.
      */
-    public function __construct();
+    public function __construct($settings = null);
 
     /**
      * Get by id a property to array.
