@@ -58,7 +58,6 @@
         $path = func_get_arg(0);
         $router = func_get_arg(1);
       }
-
       // array_push($this->middleware, $this->route->middleware($path, $router));
       $this->route->middleware($path, $router);
     }
